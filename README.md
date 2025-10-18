@@ -15,5 +15,6 @@
 <输入图像路径>：待处理图像的完整路径或相对路径
 <输出图像路径>：处理后图像的保存路径
 [处理参数]：可选，指定需要执行的图像处理操作。
-参数包括：--gray
+参数包括：--gray、--blur
 --gray操作处理结果图：![alt text](example/gray.jpg)
+--blur操作处理结果图：![alt text](example/blur.jpg)

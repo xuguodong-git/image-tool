@@ -8,6 +8,7 @@ void print_usage(const char* prog) {
     std::cout << "Usage: " << prog << " <input> <output> [options]\n"
               << "Options:\n"
               << "  --gray    Convert to grayscale\n"
+              << "  --blur    Use Gaussian blur\n"
               << std::endl;
 }
 
@@ -35,6 +36,8 @@ int main(int argc, char** argv) {
             if (result.channels() == 3) {
                 cv::cvtColor(result, result, cv::COLOR_BGR2GRAY);
             }
+        }else if (opt == "--blur") {
+            cv::GaussianBlur(result, result, cv::Size(15, 15), 0);
         }else {
             std::cerr << "Unknown option: " << opt << std::endl;
             print_usage(argv[0]);
