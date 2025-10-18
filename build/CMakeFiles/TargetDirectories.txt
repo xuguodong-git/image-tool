@@ -1,0 +1,3 @@
+/home/xu/image-tool/build/CMakeFiles/image_tool.dir
+/home/xu/image-tool/build/CMakeFiles/edit_cache.dir
+/home/xu/image-tool/build/CMakeFiles/rebuild_cache.dir
