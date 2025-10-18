@@ -9,6 +9,7 @@ void print_usage(const char* prog) {
               << "Options:\n"
               << "  --gray    Convert to grayscale\n"
               << "  --blur    Use Gaussian blur\n"
+              << "  --canny    Use Canny edge detection\n"
               << std::endl;
 }
 
@@ -38,6 +39,13 @@ int main(int argc, char** argv) {
             }
         }else if (opt == "--blur") {
             cv::GaussianBlur(result, result, cv::Size(15, 15), 0);
+        }else if (opt == "--canny") {
+            // Canny 边缘检测通常需要灰度图，先确保图像为单通道
+            if (result.channels() == 3) {
+                cv::cvtColor(result, result, cv::COLOR_BGR2GRAY);
+            }
+            // 应用 Canny 算法（阈值可根据实际需求调整）
+            cv::Canny(result, result, 30, 90);
         }else {
             std::cerr << "Unknown option: " << opt << std::endl;
             print_usage(argv[0]);
