@@ -10,6 +10,9 @@ void print_usage(const char* prog) {
               << "  --gray    Convert to grayscale\n"
               << "  --blur    Use Gaussian blur\n"
               << "  --canny    Use Canny edge detection\n"
+              << "  --rotate 90    Use image 90angle rotation\n"
+              << "  --rotate 180    Use image 180angle rotation\n"
+              << "  --rotate 270    Use image 270angle rotation\n"
               << std::endl;
 }
 
@@ -46,6 +49,36 @@ int main(int argc, char** argv) {
             }
             // 应用 Canny 算法（阈值可根据实际需求调整）
             cv::Canny(result, result, 30, 90);
+        }else if (opt == "--rotate") {
+            int angle;
+            std::string next_opt= argv[i+1];
+            angle = std::stoi(next_opt);
+            
+
+            // 检查角度是否合法
+            if (angle != 90 && angle != 180 && angle != 270) {
+                std::cerr << "错误：仅支持 90°、180°、270° 旋转" << std::endl;
+                return 1;
+            }
+
+            // 根据角度执行旋转
+            cv::Mat rotated;
+            switch (angle) {
+                case 90:
+                    // 顺时针旋转90度（OpenCV默认旋转方向）
+                    cv::rotate(result, result, cv::ROTATE_90_CLOCKWISE);
+                    break;
+                case 180:
+                    cv::rotate(result, result, cv::ROTATE_180);
+                    break;
+                case 270:
+                    // 顺时针旋转270度 = 逆时针旋转90度
+                    cv::rotate(result, result, cv::ROTATE_90_COUNTERCLOCKWISE);
+                    break;
+            }
+
+            i++;
+
         }else {
             std::cerr << "Unknown option: " << opt << std::endl;
             print_usage(argv[0]);

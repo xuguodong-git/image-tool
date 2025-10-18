@@ -11,11 +11,14 @@
 生成编译配置文件:cmake ..  
 执行编译:make  
 ## 参数说明
-基础语法：./image-tool <输入图像路径> <输出图像路径> [处理参数]
+基础语法：./image-tool <输入图像路径> <输出图像路径> [处理参数] [角度]
 <输入图像路径>：待处理图像的完整路径或相对路径
 <输出图像路径>：处理后图像的保存路径
 [处理参数]：可选，指定需要执行的图像处理操作。
-参数包括：--gray、--blur、--canny
+参数包括：--gray、--blur、--canny、--rotate angle
 --gray操作处理结果图：![alt text](example/gray.jpg)
 --blur操作处理结果图：![alt text](example/blur.jpg)
 --canny操作处理结果图：![alt text](example/canny.jpg)
+--rotate 90操作处理结果图：![alt text](example/rotate90.jpg)
+--rotate 180操作处理结果图：![alt text](example/rotate180.jpg)
+--rotate 270操作处理结果图：![alt text](example/rotate270.jpg)
