@@ -11,7 +11,6 @@
 - **核心库**：OpenCV 4.x 版本
 
 ### 编译步骤
-
 1. 进入项目根目录：
    ```bash
    cd /path/to/your/image-tool
